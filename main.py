@@ -1,7 +1,10 @@
 from random import randint
+# Импортируем модуль для отображения заставки
+from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Функция описывает атаку персонажа."""
     damage: int = 0
     if char_class == 'warrior':
         damage = 5 + randint(3, 5)
@@ -13,6 +16,7 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Функция описывает защиту персонажа."""
     defence_point: int = 0
     if char_class == 'warrior':
         defence_point = 10 + randint(5, 10)
@@ -24,6 +28,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Функция использования специальных способностей персонажем."""
     ability: str = ''
     if char_class == 'warrior':
         ability = '«Выносливость 105»'
@@ -35,6 +40,7 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Функция описывает треннировку персонажа."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -59,6 +65,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Функция описывает выбор класса персонажа."""
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -82,6 +89,24 @@ def choice_char_class() -> str:
 
 
 def main() -> None:
+    """Функция запуска игры."""
+    run_screensaver()
+    print('Приветствую тебя, искатель приключений!')
+    print('Прежде чем начать игру...')
+    char_name: str = input('...назови себя: ')
+    print(f'Здравствуй, {char_name}! '
+          'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
+    print('Ты можешь выбрать один из трёх путей силы:')
+    print('Воитель, Маг, Лекарь')
+    char_class: str = choice_char_class()
+    print(start_training(char_name, char_class))
+
+
+main()
+
+
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
